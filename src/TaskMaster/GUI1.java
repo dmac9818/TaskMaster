@@ -3,6 +3,8 @@ package TaskMaster;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 import java.util.ArrayList;
 
@@ -18,10 +20,10 @@ public class GUI1 extends BorderPane{
 	private ArrayList<Task> taskList;
 	private ListView<Task> listView;
 	private GUI1ButtonsandListPane a;
-	public GUI1(ArrayList<Task> list)
+	public GUI1(ArrayList<Task> list,Stage stage, Scene scene1)
 	{
 		this.taskList = list;
-		a = new GUI1ButtonsandListPane(list);
+		a = new GUI1ButtonsandListPane(list, stage, scene1);
 		this.setCenter(a);
 		this.setTop(new Label("hey"));
 	}

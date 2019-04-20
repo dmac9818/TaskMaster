@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;	//**Need to import to handle event
 import javafx.event.EventHandler;	//**Need to import to handle event
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 import java.awt.Panel;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class GUI1ButtonsandListPane extends HBox{
 	private Button Delete;
 	private Button Change;
 	private Button Complete;
-	public GUI1ButtonsandListPane(ArrayList<Task> list)
+	public GUI1ButtonsandListPane(ArrayList<Task> list, Stage stage, Scene scene1)
 	{
 		this.taskList = list;
 		VBox buttonlist = new VBox();
@@ -37,6 +39,14 @@ public class GUI1ButtonsandListPane extends HBox{
 		Delete.setPrefHeight(100);
 		Change.setPrefHeight(100);
 		Complete.setPrefHeight(100);
+		
+		/*Add.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("test");
+			}
+		});*/
+		addFunct(Add, stage, scene1);
 		
 		Pane addPane = new Pane();
 		buttonlist.setPrefWidth(400);
@@ -57,6 +67,17 @@ public class GUI1ButtonsandListPane extends HBox{
 		listView.setPrefWidth(400);
 		this.getChildren().addAll(buttonlist,listView);
 		
+	}
+	
+	
+	
+	public void addFunct(Button button, Stage stage, Scene scene1) {
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				AddWindow addW = new AddWindow(taskList, stage, scene1);
+			}
+		});
 	}
 	
 	//Missing Listeners
